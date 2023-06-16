@@ -5,6 +5,8 @@ class MaquinaExpendedora{
 		this.p2 = new Producto('20', 'Jugo Hit', 2400);
 		this.p3 = new Producto('30', 'Chocolatina Jet', 700);
 		this.p4 = new Producto('40', 'Galletas Festival', 1000);
+		this.p5 = new Producto('50', 'Chocorramo', 2350);
+		this.p6 = new Producto('60', 'De Todito', 4100);
 	}
 
 	darProducto1(){
@@ -25,6 +27,15 @@ class MaquinaExpendedora{
 		return this.p4;
 	}
 
+	darProducto5(){
+		// Retorna el producto 3
+		return this.p5;
+	}
+	darProducto6(){
+		// Retorna el producto 4
+		return this.p6;
+	}
+
 	abastecerProducto1(pUnidades){
 		//Invoca al metodo abastecer de la clase Producto 
 		this.p1.abastecer(pUnidades);
@@ -42,6 +53,15 @@ class MaquinaExpendedora{
 	abastecerProducto4(pUnidades){
 		//Invoca al metodo abastecer de la clase Producto 
 		this.p4.abastecer(pUnidades);
+	}
+
+	abastecerProducto5(pUnidades){
+		//Invoca al metodo abastecer de la clase Producto 
+		this.p5.abastecer(pUnidades);
+	}
+	abastecerProducto6(pUnidades){
+		//Invoca al metodo abastecer de la clase Producto 
+		this.p6.abastecer(pUnidades);
 	}
 
 	venderProducto1(){
@@ -96,11 +116,37 @@ class MaquinaExpendedora{
 		}
 	}
 
+	venderProducto5(){
+		// Vender unidades del producto 1
+		if(this.p5.darCantidadUnidadesDisponibles() > 0 ){
+			// Verifica si hay unidades disponibles del producto Y si esto es asi, se vende 1 unidad
+			this.p5.vender();
+		}
+		else{
+			// Si no hay unidades se envia un mensaje de alerta
+			alert("No hay unidades del producto");
+		}
+	}
+
+	venderProducto6(){
+		// Vender unidades del producto 1
+		if(this.p6.darCantidadUnidadesDisponibles() > 0 ){
+			// Verifica si hay unidades disponibles del producto Y si esto es asi, se vende 1 unidad
+			this.p6.vender();
+		}
+		else{
+			// Si no hay unidades se envia un mensaje de alerta
+			alert("No hay unidades del producto");
+		}
+	}
+
 	darCantidadTotalVentas(){
 		let cantidadTotal = this.p1.darCantidadUnidadesVendidas() +
 							this.p2.darCantidadUnidadesVendidas() +
 							this.p3.darCantidadUnidadesVendidas() +
-							this.p4.darCantidadUnidadesVendidas();
+							this.p4.darCantidadUnidadesVendidas() +
+							this.p5.darCantidadUnidadesVendidas() +
+							this.p6.darCantidadUnidadesVendidas();
 		return cantidadTotal;
 	}
 
@@ -108,7 +154,9 @@ class MaquinaExpendedora{
 		let valorVentas = this.p1.darCantidadUnidadesVendidas() * this.p1.darPrecio() +
 						  this.p2.darCantidadUnidadesVendidas() * this.p2.darPrecio() +
 						  this.p3.darCantidadUnidadesVendidas() * this.p3.darPrecio() +
-						  this.p4.darCantidadUnidadesVendidas() * this.p4.darPrecio();
+						  this.p4.darCantidadUnidadesVendidas() * this.p4.darPrecio() +
+						  this.p5.darCantidadUnidadesVendidas() * this.p5.darPrecio() +
+						  this.p6.darCantidadUnidadesVendidas() * this.p6.darPrecio();
 		return valorVentas;
 	}
 }
@@ -171,4 +219,34 @@ function abastacer_papas(){
 	m.abastecerProducto1(parseInt(cant));
 	let disponible = m.darProducto1().darCantidadUnidadesDisponibles();
 	document.getElementById('disp_papa').innerHTML = 'Disponible: ' + disponible;
+}
+function abastacer_jugo(){
+	let cant = prompt("Ingrese el número de unidades que abastecerá el producto");
+	m.abastecerProducto2(parseInt(cant));
+	let disponible = m.darProducto2().darCantidadUnidadesDisponibles();
+	document.getElementById('disp_jugo').innerHTML = 'Disponible: ' + disponible;
+}
+function abastacer_choco(){
+	let cant = prompt("Ingrese el número de unidades que abastecerá el producto");
+	m.abastecerProducto3(parseInt(cant));
+	let disponible = m.darProducto3().darCantidadUnidadesDisponibles();
+	document.getElementById('disp_choco').innerHTML = 'Disponible: ' + disponible;
+}
+function abastacer_galleta(){
+	let cant = prompt("Ingrese el número de unidades que abastecerá el producto");
+	m.abastecerProducto4(parseInt(cant));
+	let disponible = m.darProducto4().darCantidadUnidadesDisponibles();
+	document.getElementById('disp_galleta').innerHTML = 'Disponible: ' + disponible;
+}
+function abastacer_chocorramo(){
+	let cant = prompt("Ingrese el número de unidades que abastecerá el producto");
+	m.abastecerProducto5(parseInt(cant));
+	let disponible = m.darProducto5().darCantidadUnidadesDisponibles();
+	document.getElementById('disp_chocorramo').innerHTML = 'Disponible: ' + disponible;
+}
+function abastacer_detodito(){
+	let cant = prompt("Ingrese el número de unidades que abastecerá el producto");
+	m.abastecerProducto6(parseInt(cant));
+	let disponible = m.darProducto6().darCantidadUnidadesDisponibles();
+	document.getElementById('disp_detodito').innerHTML = 'Disponible: ' + disponible;
 }
